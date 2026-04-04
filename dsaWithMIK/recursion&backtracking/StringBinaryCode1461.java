@@ -34,7 +34,7 @@ public class StringBinaryCode1461 {
     return stringSet.size() == 1 << k;
   }
 
-  static void main() {
+  public static void main(String[] args) {
     //        Set<String> set = new HashSet<>();
     //        generateBinaryCodes(3, set, "");
     //        for (String s : set) {
