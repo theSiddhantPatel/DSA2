@@ -1,7 +1,3 @@
-package RaghavSirDSAgfg.binary_Tree_01;
-
-import java.util.ArrayList;
-
 public class symmetricTree101 {
 
   //Definition for a binary tree node.

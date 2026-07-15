@@ -22,14 +22,16 @@ public class bfs {
       q.add(root);
       while (!q.isEmpty()) {
         Node front = q.remove();
-        if (front.left != null) q.add(front.left);
-        if (front.right != null) q.add(front.right);
+        if (front.left != null)
+          q.add(front.left);
+        if (front.right != null)
+          q.add(front.right);
         System.out.print(front.data + " ");
       }
       System.out.println();
     }
 
-    class Pair {
+    static class Pair {
 
       Node node;
       int level;
@@ -43,7 +45,7 @@ public class bfs {
 
     public static void levelOrderLineWise(Node root) {
       Queue<Pair> q = new LinkedList<>();
-      int currentLevel = 0;
+      // int currentLevel = 0;
       q.add(new Pair(root, 0));
       while (!q.isEmpty()) {
         Pair front = q.remove();

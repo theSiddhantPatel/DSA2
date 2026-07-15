@@ -1,5 +1,3 @@
-package RaghavSirDSAgfg.binary_Tree_01;
-
 public class Implenentation {
 
   public static class Node {
@@ -32,6 +30,7 @@ public class Implenentation {
     b.right = e;
     c.left = f;
     c.right = g;
+    // g.left = a; this is an infinite loop
     // System.out.println(a.left.left.data);
     // display(a);
     //System.out.println(sizeOfTree(a));
