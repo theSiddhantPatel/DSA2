@@ -15,6 +15,9 @@ public class diameter_of_binary_tree {
 
   int diameter = 0;
 
+  //return the longest node-path difference bw two leaf nodes.
+  //  this diameter may or may not pass through root node.
+
   public int diameterOfBinaryTree(TreeNode root) {
     depth_of_tree(root);
     return diameter;
