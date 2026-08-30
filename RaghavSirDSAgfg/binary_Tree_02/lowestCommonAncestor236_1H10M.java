@@ -1,4 +1,4 @@
-//if you choose any nod of left subtree and any node of right subtree , root will be lca;
+//if you choose any node of left subtree and any node of right subtree , root will be lca;
 
 public class lowestCommonAncestor236_1H10M {
 

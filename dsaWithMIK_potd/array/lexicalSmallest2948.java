@@ -1,0 +1,76 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
+public class lexicalSmallest2948 {
+    public int[] lexicographicallySmallestArray(int[] nums, int limit) {
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+
+            while (true) {
+                int smallValue = nums[i];
+                int idx = -1;
+
+                for (int j = i + 1; j < n; j++) {
+                    if (Math.abs(nums[i] - nums[j]) <= limit) {
+                        if (nums[j] < smallValue) {
+                            smallValue = nums[j];
+                            idx = j;
+                        }
+                    }
+                }
+                if (idx != -1) {
+                    int temp = nums[i];
+                    nums[i] = nums[idx];
+                    nums[idx] = temp;
+                } else
+                    break;
+            }
+        }
+        return nums;
+    }
+
+
+     public int[] lexicographicallySmallestArray2(int[] nums, int limit) {
+        int n = nums.length;
+        int[] arr = nums.clone();
+        Arrays.sort(arr);
+
+        int groupNum = 0;
+        Map<Integer, Integer> numToGroup = new HashMap<>();
+        Map<Integer, LinkedList<Integer>> groupToList = new HashMap<>();
+
+        numToGroup.put(arr[0], groupNum);
+        groupToList.putIfAbsent(groupNum, new LinkedList<>());
+        groupToList.get(groupNum).add(arr[0]);
+
+        for (int i = 1; i < n; i++) {
+            if (Math.abs(arr[i] - arr[i - 1]) > limit) {
+                groupNum++;
+            }
+            numToGroup.put(arr[i], groupNum);
+            groupToList.putIfAbsent(groupNum, new LinkedList<>());
+            groupToList.get(groupNum).add(arr[i]);
+        }
+
+        int[] result = new int[n];
+        for (int i = 0; i < n; i++) {
+            int num = nums[i];
+            int group = numToGroup.get(num);
+            result[i] = groupToList.get(group).pollFirst(); // Use and remove the smallest element
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        lexicalSmallest2948 x = new lexicalSmallest2948();
+        int[] nums = { 10, 2, 7, 3, 8, 4, 9, 6, 3 };
+        x.lexicographicallySmallestArray(nums, 1);
+        for (int i = 0; i < nums.length; i++) {
+            System.out.print(nums[i] + " ");
+
+        }
+    }
+}
