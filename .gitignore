@@ -3,7 +3,7 @@
 .vscode
 .xml
 *.class
-
+.agents
 
 
 *.txt
