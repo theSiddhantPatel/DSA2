@@ -1,6 +1,3 @@
-import java.util.Arrays;
-
-//recursion part 1 gfg by raghav sir playlist
 public class basics {
 
   // question 1:
@@ -23,6 +20,35 @@ public class basics {
     if (b == 1) return a;
     if (b % 2 == 0) return powOfNum(a, b / 2) * powOfNum(a, b / 2);
     else return a * powOfNum(a, b / 2) * powOfNum(a, b / 2);
+  }
+
+  //powOfNum using dp
+  static int powOfNumWithDP(int a, int b) {
+    int[] dp = new int[b + 1];
+    return solve2(a, b, dp);
+  }
+
+  static int solve2(int a, int b, int[] dp) {
+    if (b == 0) return 1;
+    if (b == 1) return a;
+    if (dp[b] != 0) return dp[b];
+    int half = solve2(a, b / 2, dp);
+    if (b % 2 == 0) {
+      dp[b] = half * half;
+      return dp[b];
+    } else {
+      dp[b] = a * half * half;
+      return dp[b];
+    }
+  }
+
+  //now what if we don't use dp
+
+  static int powOfNum3(int a, int b) {
+    if (b == 0) return 1;
+    if (b == 1) return a;
+    int half = powOfNum3(a, b / 2);
+    return (b % 2 == 0 ? half * half : a * half * half);
   }
 
   static int sumOfNaturalNums(int n) {
@@ -94,7 +120,9 @@ public class basics {
     // System.out.println(gcd(5,28));
     // System.out.println(lcm(8, 4, 1, 1));
     //System.out.println(fibonacci(8));
-    fibonacci_with_dp(8);
+    //fibonacci_with_dp(8);
     // System.out.println(fib_with_dp_pure_recursion(10)+);
+    // System.out.println(powOfNumWithDP(10, 9));
+    System.out.println(powOfNum3(5, 2));
   }
 }
