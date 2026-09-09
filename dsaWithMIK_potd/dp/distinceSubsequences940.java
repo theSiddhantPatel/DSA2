@@ -17,7 +17,9 @@ public class distinceSubsequences940 {
     }
     //make a choice and recurese,
     solve(s, sb.append(s.charAt(i)), set, i + 1);
+    //undo that choice
     sb.deleteCharAt(sb.length() - 1);
+    //make another choice
     solve(s, sb, set, i + 1);
   }
 

@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Recursion_Part2 {
 
   //gfg lectures
@@ -48,6 +50,21 @@ public class Recursion_Part2 {
     subSets(s, idx + 1, ans);
   }
 
+  public static void subsets2(
+    String s,
+    int idx,
+    StringBuilder sb,
+    Set<String> set
+  ) {
+    if (idx == s.length()) {
+      set.add(sb.toString());
+      return;
+    }
+    subsets2(s, idx + 1, sb.append(s.charAt(idx)), set);
+    subsets2(s, idx + 1, sb.deleteCharAt(sb.length() - 1), set);
+    subsets2(s, idx + 1, sb, set);
+  }
+
   static void main(String[] args) {
     //        System.out.println(uniquePaths(2, 2));
     //Recursion_Part2 x = new Recursion_Part2();
@@ -55,5 +72,11 @@ public class Recursion_Part2 {
     //recPrint(new int[]{1,2,3,4,5},0);
     //System.out.println(elementExistsOrNot(new int[]{1, 3, 3, 5, 6, 4}, 0, 3));
     subSets("abc", 0, "");
+    Set<String> set = new HashSet<>();
+    StringBuilder sb = new StringBuilder();
+    subsets2("abc", 0, sb, set);
+    for (String str : set) {
+      System.out.print(str + " ");
+    }
   }
 }

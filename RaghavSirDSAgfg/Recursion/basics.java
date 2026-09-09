@@ -57,9 +57,26 @@ public class basics {
     return n + sumOfNaturalNums(n - 1);
   }
 
-  static int gcd(int a, int b) {
+  //gcd using for loop :
+  public static int gcd(int a, int b) {
+    int hcf = 1;
+    for (int i = 2; i <= Math.min(a, b); i++) {
+      if (a % i == 0 && b % i == 0) hcf = i;
+    }
+    return hcf;
+  }
+
+  //gcd with for loop : optimization
+  public static int gcd3(int a, int b) {
+    for (int i = Math.min(a, b); i >= 1; i--) {
+      if (a % i == 0 && b % i == 0) return i;
+    }
+    return 1;
+  }
+
+  static int gcd2(int a, int b) {
     if (b == 0) return a;
-    return gcd(b, a % b);
+    return gcd2(b, a % b);
   }
 
   static int lcm(int a, int b, int i, int res) {
@@ -117,12 +134,14 @@ public class basics {
     // System.out.println(reverseNum(1004, 0));
     // System.out.println(sumOfNaturalNums(10));
     // System.out.println(powOfNum(1, 5));
-    // System.out.println(gcd(5,28));
+    // System.out.println(gcd(12, 16));
+    System.out.println(gcd3(12, 16));
+    // System.out.println(gcd2(5,28));
     // System.out.println(lcm(8, 4, 1, 1));
     //System.out.println(fibonacci(8));
     //fibonacci_with_dp(8);
     // System.out.println(fib_with_dp_pure_recursion(10)+);
     // System.out.println(powOfNumWithDP(10, 9));
-    System.out.println(powOfNum3(5, 2));
+    //System.out.println(powOfNum3(5, 2));
   }
 }
