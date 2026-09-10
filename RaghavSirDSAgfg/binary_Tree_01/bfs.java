@@ -1,5 +1,3 @@
-package RaghavSirDSAgfg.binary_Tree_01;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -22,10 +20,8 @@ public class bfs {
       q.add(root);
       while (!q.isEmpty()) {
         Node front = q.remove();
-        if (front.left != null)
-          q.add(front.left);
-        if (front.right != null)
-          q.add(front.right);
+        if (front.left != null) q.add(front.left);
+        if (front.right != null) q.add(front.right);
         System.out.print(front.data + " ");
       }
       System.out.println();
